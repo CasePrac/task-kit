@@ -1,0 +1,19 @@
+openapi: 3.0.3
+info:
+  title: E-Commerce Multi-Step Checkout Fixture API
+  version: 1.0.0
+paths:
+  /api/ecommerce-checkout:
+    get:
+      summary: Fetch data for E-Commerce Multi-Step Checkout
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: ok

@@ -1,0 +1,47 @@
+{
+  "id": "analytics-dashboard",
+  "version": "1.0.0",
+  "title": "Sales & Metrics Analytics Dashboard",
+  "difficulty": "advanced",
+  "category": "analytics",
+  "summary": "Build Sales & Metrics Analytics Dashboard according to design specs and API contracts.",
+  "description": "Implement the full Sales & Metrics Analytics Dashboard workflow including forms, validation, and accessibility.",
+  "submission": {
+    "startPath": "/analytics-dashboard",
+    "requiredRoutes": [
+      "/analytics-dashboard"
+    ]
+  },
+  "viewports": [
+    {
+      "id": "desktop",
+      "width": 1440,
+      "height": 900
+    },
+    {
+      "id": "mobile",
+      "width": 390,
+      "height": 844
+    }
+  ],
+  "evaluation": {
+    "timeoutMs": 120000,
+    "visual": {
+      "enabled": true,
+      "maxDiffPixelRatio": 0.02,
+      "threshold": 0.2
+    },
+    "functional": {
+      "enabled": true
+    },
+    "accessibility": {
+      "enabled": true,
+      "maxViolations": 0
+    }
+  },
+  "scoring": {
+    "visualWeight": 50,
+    "functionalWeight": 40,
+    "accessibilityWeight": 10
+  }
+}

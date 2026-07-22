@@ -1,0 +1,19 @@
+openapi: 3.0.3
+info:
+  title: Two-Factor Authentication Verification UI Fixture API
+  version: 1.0.0
+paths:
+  /api/auth-mfa-flow:
+    get:
+      summary: Fetch data for Two-Factor Authentication Verification UI
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: ok

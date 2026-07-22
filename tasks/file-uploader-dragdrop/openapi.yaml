@@ -1,0 +1,19 @@
+openapi: 3.0.3
+info:
+  title: Drag & Drop Asset Uploader UI Fixture API
+  version: 1.0.0
+paths:
+  /api/file-uploader-dragdrop:
+    get:
+      summary: Fetch data for Drag & Drop Asset Uploader UI
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: ok

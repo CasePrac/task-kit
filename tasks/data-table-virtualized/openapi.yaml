@@ -1,0 +1,19 @@
+openapi: 3.0.3
+info:
+  title: Product Inventory Data Table UI Fixture API
+  version: 1.0.0
+paths:
+  /api/data-table-virtualized:
+    get:
+      summary: Fetch data for Product Inventory Data Table UI
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: ok

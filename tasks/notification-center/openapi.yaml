@@ -1,0 +1,19 @@
+openapi: 3.0.3
+info:
+  title: In-App Realtime Notification Feed UI Fixture API
+  version: 1.0.0
+paths:
+  /api/notification-center:
+    get:
+      summary: Fetch data for In-App Realtime Notification Feed UI
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: ok
