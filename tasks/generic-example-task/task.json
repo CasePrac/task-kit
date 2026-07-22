@@ -1,15 +1,17 @@
 {
-  "id": "fintech-transfer-flow",
+  "id": "generic-example-task",
   "version": "1.0.0",
-  "title": "Bank Transfer Flow",
+  "title": "Generic Example Task",
   "difficulty": "intermediate",
-  "category": "fintech",
-  "summary": "Build Bank Transfer Flow according to design specs and API contracts.",
-  "description": "Implement the full Bank Transfer Flow workflow including forms, validation, and accessibility.",
+  "category": "general",
+  "summary": "Demonstration task kit template for CasePrac evaluation platform.",
+  "description": "Implement a generic dashboard interface matching design specs and API contracts.",
+  "includeReferenceSource": false,
+  "devCommand": "npm run dev",
   "submission": {
-    "startPath": "/fintech-transfer-flow",
+    "startPath": "/generic-example-task",
     "requiredRoutes": [
-      "/fintech-transfer-flow"
+      "/generic-example-task"
     ]
   },
   "viewports": [

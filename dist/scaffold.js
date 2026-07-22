@@ -13,6 +13,8 @@ export async function scaffoldTaskKit(options) {
         category,
         summary: `Build ${title} according to design specs and API contracts.`,
         description: `Implement the full ${title} workflow including forms, validation, and accessibility.`,
+        includeReferenceSource: false,
+        devCommand: 'npm run dev',
         submission: {
             startPath: `/${slug}`,
             requiredRoutes: [`/${slug}`],
@@ -69,8 +71,31 @@ paths:
                     type: string
                     example: ok
 `;
+    const referenceHtml = `<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>${title} Reference</title>
+  <style>
+    body { font-family: system-ui, sans-serif; padding: 2rem; background: #0f172a; color: #f8fafc; }
+    .card { background: #1e293b; padding: 1.5rem; border-radius: 0.5rem; border: 1px solid #334155; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>${title} Reference App</h1>
+    <p>Reference implementation used by Playwright capture runner.</p>
+  </div>
+</body>
+</html>
+`;
     fs.writeFileSync(path.join(targetDir, 'task.json'), JSON.stringify(manifest, null, 2));
     fs.writeFileSync(path.join(targetDir, 'brief.md'), briefMarkdown);
     fs.writeFileSync(path.join(targetDir, 'openapi.yaml'), apiSpecYaml);
+    const referenceDir = path.join(targetDir, 'reference');
+    if (!fs.existsSync(referenceDir)) {
+        fs.mkdirSync(referenceDir, { recursive: true });
+    }
+    fs.writeFileSync(path.join(referenceDir, 'index.html'), referenceHtml);
     return targetDir;
 }

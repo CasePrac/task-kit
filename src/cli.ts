@@ -5,12 +5,13 @@ import * as path from 'path';
 import { scaffoldTaskKit } from './scaffold.js';
 import { validateTaskKit } from './validator.js';
 import { buildTaskKit } from './builder.js';
+import { captureTaskKit } from './capture.js';
 
 const program = new Command();
 
 program
   .name('caseprac-task')
-  .description('CLI tool to scaffold, validate, test, and build CasePrac Task Kits')
+  .description('CLI tool to scaffold, validate, capture baselines, test, and build CasePrac Task Kits')
   .version('1.0.0');
 
 program
@@ -36,6 +37,27 @@ program
     console.log(`   - ${path.join(targetDir, 'task.json')}`);
     console.log(`   - ${path.join(targetDir, 'brief.md')}`);
     console.log(`   - ${path.join(targetDir, 'openapi.yaml')}`);
+    console.log(`   - ${path.join(targetDir, 'reference/index.html')}`);
+  });
+
+program
+  .command('capture [dir]')
+  .description('Capture Playwright baseline snapshots from reference solution')
+  .action(async (dir) => {
+    const targetDir = path.resolve(process.cwd(), dir || '.');
+    console.log(`📸 Capturing Playwright baselines at: ${targetDir}...`);
+
+    const result = await captureTaskKit(targetDir);
+
+    if (result.valid && result.baselinesDir) {
+      console.log(`✅ Playwright baselines captured successfully!`);
+      console.log(`   Location: ${result.baselinesDir}`);
+      result.capturedFiles?.forEach((f) => console.log(`   - ${f}`));
+    } else {
+      console.error(`❌ Capture failed.`);
+      result.errors?.forEach((err) => console.error(`   - ${err}`));
+      process.exit(1);
+    }
   });
 
 program
@@ -86,11 +108,17 @@ program
   .command('build [dir]')
   .description('Build and package Task-Kit for submission or self-hosting')
   .option('-o, --out <dir>', 'Output directory for bundle')
+  .option('--include-source', 'Bundle reference source code in release')
+  .option('--no-include-source', 'Exclude reference source code from release')
   .action(async (dir, options) => {
     const targetDir = path.resolve(process.cwd(), dir || '.');
     console.log(`📦 Building Task-Kit at: ${targetDir}...`);
 
-    const result = await buildTaskKit(targetDir, options.out ? path.resolve(options.out) : undefined);
+    const includeSource = options.includeSource !== undefined ? options.includeSource : undefined;
+    const result = await buildTaskKit(targetDir, {
+      outDir: options.out ? path.resolve(options.out) : undefined,
+      includeSource,
+    });
 
     if (result.valid && result.bundlePath) {
       console.log(`✅ Task-Kit built successfully!`);

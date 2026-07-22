@@ -1,0 +1,19 @@
+{
+  "capturedAt": "2026-07-22T21:48:52.013Z",
+  "viewports": [
+    "desktop",
+    "mobile"
+  ],
+  "nodes": [
+    {
+      "tag": "header",
+      "text": "Generic Example Task"
+    },
+    {
+      "tag": "main",
+      "routes": [
+        "/generic-example-task"
+      ]
+    }
+  ]
+}

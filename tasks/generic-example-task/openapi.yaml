@@ -1,11 +1,11 @@
 openapi: 3.0.3
 info:
-  title: Live Streaming Chat Interface UI Fixture API
+  title: Generic Example Task Fixture API
   version: 1.0.0
 paths:
-  /api/chat-interface-stream:
+  /api/generic-example-task:
     get:
-      summary: Fetch data for Live Streaming Chat Interface UI
+      summary: Fetch data for Generic Example Task
       responses:
         '200':
           description: Successful response
@@ -14,6 +14,9 @@ paths:
               schema:
                 type: object
                 properties:
-                  status:
+                  id:
                     type: string
-                    example: ok
+                    example: item-1
+                  title:
+                    type: string
+                    example: Generic Item

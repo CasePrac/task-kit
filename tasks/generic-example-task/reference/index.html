@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Generic Example Task Reference</title>
+  <style>
+    body { font-family: system-ui, sans-serif; padding: 2rem; background: #0f172a; color: #f8fafc; }
+    .card { background: #1e293b; padding: 1.5rem; border-radius: 0.5rem; border: 1px solid #334155; }
+    button { background: #3b82f6; color: white; border: none; padding: 0.5rem 1rem; border-radius: 0.25rem; cursor: pointer; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>Generic Example Task</h1>
+    <p id="content">Loading reference data...</p>
+    <button id="toggle-btn">Toggle State</button>
+  </div>
+  <script>
+    fetch('/api/generic-example-task')
+      .then(res => res.json())
+      .then(data => {
+        document.getElementById('content').textContent = data.title || 'Generic Item';
+      })
+      .catch(() => {
+        document.getElementById('content').textContent = 'Generic Item (Offline)';
+      });
+  </script>
+</body>
+</html>

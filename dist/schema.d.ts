@@ -138,6 +138,8 @@ export declare const TaskManifestSchema: z.ZodObject<{
     category: z.ZodString;
     summary: z.ZodOptional<z.ZodString>;
     description: z.ZodOptional<z.ZodString>;
+    includeReferenceSource: z.ZodDefault<z.ZodOptional<z.ZodBoolean>>;
+    devCommand: z.ZodOptional<z.ZodString>;
     submission: z.ZodObject<{
         startPath: z.ZodString;
         requiredRoutes: z.ZodArray<z.ZodString, "many">;
@@ -241,6 +243,7 @@ export declare const TaskManifestSchema: z.ZodObject<{
     title: string;
     difficulty: "beginner" | "intermediate" | "advanced";
     category: string;
+    includeReferenceSource: boolean;
     submission: {
         startPath: string;
         requiredRoutes: string[];
@@ -272,6 +275,7 @@ export declare const TaskManifestSchema: z.ZodObject<{
     };
     summary?: string | undefined;
     description?: string | undefined;
+    devCommand?: string | undefined;
 }, {
     id: string;
     version: string;
@@ -289,6 +293,8 @@ export declare const TaskManifestSchema: z.ZodObject<{
     }[];
     summary?: string | undefined;
     description?: string | undefined;
+    includeReferenceSource?: boolean | undefined;
+    devCommand?: string | undefined;
     evaluation?: {
         timeoutMs?: number | undefined;
         visual?: {

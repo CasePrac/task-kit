@@ -40,6 +40,8 @@ export const TaskManifestSchema = z.object({
     category: z.string().min(1),
     summary: z.string().optional(),
     description: z.string().optional(),
+    includeReferenceSource: z.boolean().optional().default(false),
+    devCommand: z.string().optional(),
     submission: TaskSubmissionSpecSchema,
     viewports: z.array(ViewportSpecSchema).min(1),
     evaluation: EvaluationSpecSchema.default({}),
